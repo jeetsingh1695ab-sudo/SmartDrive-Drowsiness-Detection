@@ -1,141 +1,80 @@
-# SmartDrive — Real-Time Driver Drowsiness Detection
+# SmartDrive - Real-Time Driver Drowsiness Detection
 
-SmartDrive is a computer vision and deep learning project designed to detect driver drowsiness by monitoring eye states in real time.
+## Overview
+SmartDrive is a computer vision and deep learning based driver drowsiness detection system.
 
-## 🚗 Project Overview
+## Features
+- Face detection using MediaPipe
+- Open and Closed eye classification
+- CNN based eye prediction
+- Blink counting
+- Eye closure duration monitoring
+- Drowsiness detection
+- Audible alarm
+- Session logging
+- Analytics dashboard
 
-Driver fatigue can reduce attention and reaction time. SmartDrive analyzes the driver's eyes using a webcam and a CNN-based eye-state classifier to identify prolonged eye closure.
+## System Pipeline
+Webcam -> Face Detection -> Eye Detection -> CNN Prediction ->
+Blink Analysis -> Drowsiness Detection -> Alarm -> Session Logs
 
-## ✨ Features
+## Machine Learning
+The project uses a Convolutional Neural Network (CNN).
 
-* Real-time face detection
-* Eye-state classification
-* Open / Closed eye prediction
-* Blink counting
-* Eye-closure duration tracking
-* Drowsiness detection using a time threshold
-* Audio alarm when drowsiness is detected
-* Session logging
-* Drowsiness analytics and visualization
-* Trained CNN model
+Eye classes:
+- 0 = Closed
+- 1 = Open
 
-## 🔄 System Pipeline
+Input image size: 64 x 64 grayscale
 
-```text
-Webcam
-   ↓
-Face Detection
-   ↓
-Eye Region Extraction
-   ↓
-CNN Eye-State Classification
-   ↓
-Blink & Eye-Closure Analysis
-   ↓
-Drowsiness Detection
-   ↓
-Audio Alert + Dashboard + Logs
-```
+## Dataset
+MRL Eye Dataset
 
-## 🧠 Eye-State Classes
+Approximately 85,000 eye images were used for training and evaluation.
 
-| Class | Meaning |
-| ----: | ------- |
-|     0 | Closed  |
-|     1 | Open    |
+## Technologies
+- Python
+- TensorFlow
+- Keras
+- OpenCV
+- MediaPipe
+- NumPy
+- Pandas
+- Matplotlib
+- Scikit-learn
+- Google Colab
 
-The CNN model processes eye images resized to **64 × 64 grayscale**.
-
-## 📊 Dataset
-
-The model was trained using the **MRL Eye Dataset**, which contains images of open and closed eyes captured under different conditions.
-
-Dataset information:
-http://mrl.cs.vsb.cz/data/eyedataset/mrlEyes_2018_01.zip
-
-## 🛠️ Technologies
-
-* Python
-* TensorFlow / Keras
-* OpenCV
-* MediaPipe
-* NumPy
-* Pandas
-* Matplotlib
-* Scikit-learn
-* Google Colab
-
-## 📁 Project Structure
-
-```text
+## Project Structure
 SmartDrive/
-│
-├── assets/
-│
-├── logs/
-│   └── smartdrive_session_logs.csv
-│
 ├── models/
-│   └── smartdrive_eye_model.keras
-│
+├── logs/
 ├── notebooks/
-│
 ├── src/
-│   ├── drowsiness_detector.py
-│   ├── eye_classifier.py
-│   ├── face_detector.py
-│   └── smartdrive_monitor.py
-│
+├── assets/
 ├── README.md
 └── requirements.txt
-```
 
-## ⚙️ How It Works
-
-1. The webcam captures the driver's face.
+## How It Works
+1. Webcam captures the driver.
 2. MediaPipe detects the face.
-3. The eye region is extracted from the detected face.
-4. The CNN predicts whether the eyes are open or closed.
-5. Blink events and eye-closure duration are tracked.
-6. If the eyes remain closed for the configured duration, SmartDrive changes the status to **DROWSY**.
-7. An audio alarm is triggered.
-8. Session information is stored in CSV logs for later analysis.
+3. The eye region is extracted.
+4. CNN predicts Open or Closed.
+5. The system monitors continuous eye closure.
+6. If eyes remain closed for the threshold duration, drowsiness is detected.
+7. An alarm is generated.
+8. Session data is saved in CSV format.
 
-## ⏱️ Drowsiness Logic
+## Drowsiness Threshold
+Current threshold: 2 seconds of continuous eye closure.
 
-SmartDrive does not classify a driver as drowsy from a single closed-eye frame.
+## Disclaimer
+SmartDrive is an educational computer vision prototype.
+It is not a certified automotive safety system.
 
-Instead, it monitors continuous eye closure for a time threshold. This helps reduce false alarms caused by normal blinking.
-
-## 📈 Analytics
-
-The project records session information such as:
-
-* Total blinks
-* Maximum eye-closure duration
-* Final session status
-* Session timestamp
-
-These logs can be used to visualize drowsiness-related statistics.
-
-## 🔮 Future Improvements
-
-* More robust eye-region detection
-* Improved CNN accuracy
-* Head-pose estimation
-* Yawning detection
-* Longer continuous webcam sessions
-* Raspberry Pi integration
-* Arduino-based physical buzzer
-* Mobile or web dashboard
-* Model optimization for edge devices
-
-## ⚠️ Disclaimer
-
-SmartDrive is an educational and research project. It should not be relied upon as the sole safety system for driving or other safety-critical applications.
-
-## 👨‍💻 Project
-
-**SmartDrive — Real-Time Driver Drowsiness Detection**
-
-Built using computer vision and deep learning.
+## Future Improvements
+- Real-time continuous webcam streaming
+- Yawning detection
+- Head pose detection
+- Raspberry Pi deployment
+- Arduino buzzer integration
+- Improved eye landmark detection
