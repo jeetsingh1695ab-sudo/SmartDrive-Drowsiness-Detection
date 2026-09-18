@@ -1,4 +1,5 @@
 # SmartDrive - Real-Time Driver Drowsiness Detection
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jeetsingh1695ab-sudo/SmartDrive-Drowsiness-Detection/blob/main/SmartDrive_Drowsiness_Detection.ipynb)
 
 ## Overview
 SmartDrive is a computer vision and deep learning based driver drowsiness detection system.
