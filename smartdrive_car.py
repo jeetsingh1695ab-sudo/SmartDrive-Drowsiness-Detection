@@ -32,8 +32,8 @@ except ImportError:
     pyttsx3 = None
 
 
-MODEL_PATH = "smartdrive_eye_model.keras"
-FACE_MODEL_PATH = "blaze_face_short_range.tflite"
+MODEL_PATH = os.path.join("models", "smartdrive_eye_model.keras")
+FACE_MODEL_PATH = os.path.join("models", "blaze_face_short_range.tflite")
 LOG_FILE = "smartdrive_session_logs.csv"
 
 CAMERA_INDEX = 0
